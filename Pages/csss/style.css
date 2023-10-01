@@ -68,11 +68,16 @@ section .content{
 .all-items .item{
     width: 22%;
 }
+.item .div-img2 img{
+    width: 100%;
+    height: 350px;
+}
 .item .div-img{
     border-bottom: 2px solid #e9eaf0;
 }
 .item .div-img img{
     width: 100%;
+    height: 260px;
 }
 .item .div-text h4{
     margin: 15px 0 10px;

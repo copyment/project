@@ -74,7 +74,7 @@
                     <h4> TOP BOOK </h4>
                 </div>
                 <div class="item">
-                    <div class="div-img">
+                    <div class="div-img2">
                         <img src="./imgs/bok1.jpg" alt="">
                     </div>
                     <div class="div-text">
@@ -101,74 +101,22 @@
                 </div>
 
                 <div class="all-items">
+                    {{#each latestBooks}}
+                            <div class="item">
+                                <div class="div-img">
+                                    <img src="data:image/jpeg;base64,{{this.ItemImage}}" alt="{{this.Title}}">
+                                </div>
+                                <div class="div-text">
+                                    <h4><a href="/item?bookId={{this._id}}">{{this.Title}}</a></h4>
+                                    <p>{{this.CreatorAuthor}}</p>
+                                    <!-- Add other book details as needed -->
+                                    <div class="price">
+                                        <span>Reserve</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
 
-                    <div class="item">
-                        <div class="div-img">
-                            <img src="./imgs/bok5.jpg" alt="">
-                        </div>
-                        <div class="div-text">
-                            <h4><a href="#">Harry</a></h4>
-                            <p>Book.</p>
-                            <div class="stars">
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="price">
-                                <span>Reserve</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="div-img">
-                            <img src="./imgs/bok3.jpg" alt="">
-                        </div>
-                        <div class="div-text">
-                            <h4><a href="#">Light Beyond</a></h4>
-                            <p>The book</p>
-                            <div class="stars">
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="price">
-                                <span>Reserve</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="div-img">
-                            <img src="./imgs/bok4.jpg" alt="">
-                        </div>
-                        <div class="div-text">
-                            <h4><a href="#">NORMAL PEOPLE</a></h4>
-                            <p>SALLY ROONEY.</p>
-                            <div class="stars">
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="price">
-                                <span>Reserve</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="div-img">
-                            <img src="./imgs/bok5.jpg" alt="">
-                        </div>
-                        <div class="div-text">
-                            <h4><a href="#">Harry Potter</a></h4>
-                            <p>J.k Rowling</p>
-                            <div class="stars">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                            </div>
-                            <div class="price">
-                                <span>Reserve</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
             <!--------- NEW BOOKS E--------->
         </section>
         <!--------- TOP BOOK ROW E--------->
@@ -240,80 +188,27 @@
                         <a href="/bcollection" class="btn">Browse</a>
                     </div>
                 </div>
-
-                <div class="all-items">
-
-                    <div class="item">
-                        <div class="div-img">
-                            <img src="./imgs/bok11.jpg" alt="">
-                        </div>
-                        <div class="div-text">
-                            <h4><a href="#">Fool Man</a></h4>
-                            <p>by: Olivia Ribeiro</p>
-                            <div class="stars">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
+            <!--------- RANDOM BOOKS S--------->
+                <div class="all-items" id="">
+                    {{#each randomBooks}}
+                        <div class="item">
+                            <div class="div-img">
+                                <img src="data:image/jpeg;base64,{{this.ItemImage}}" alt="{{this.Title}}">
                             </div>
-                            <div class="price">
-                                <span>Available</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="div-img">
-                            <img src="./imgs/bok12.jpg" alt="">
-                        </div>
-                        <div class="div-text">
-                            <h4><a href="#">Harry Potter</a></h4>
-                            <p>by: J.K Howling</p>
-                            <div class="stars">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star-half-stroke"></i>
-                            </div>
-                            <div class="price">
-                                <span>Available</span>
+                            <div class="div-text">
+                                <h4><a href="/item?bookId={{this._id}}">{{this.Title}}</a></h4>
+                                <p>{{this.CreatorAuthor}}</p>
+                                <!-- Add other book details as needed -->
+                                <div class="stars">
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <div class="price">
+                                    <span>Reserve</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="div-img">
-                            <img src="./imgs/bok13.jpg" alt="">
-                        </div>
-                        <div class="div-text">
-                            <h4><a href="#">Follow Me</a></h4>
-                            <p>by: Sue Rainsford</p>
-                            <div class="stars">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star-half-stroke"></i>
-                            </div>
-                            <div class="price">
-                                <span>Available</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="div-img">
-                            <img src="./imgs/bok14.jpg" alt="">
-                        </div>
-                        <div class="div-text">
-                            <h4><a href="#">The Swallow</a></h4>
-                            <p>by: Liza Lutz</p>
-                            <div class="stars">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star-half-stroke"></i>
-                            </div>
-                            <div class="price">
-                                <del>OUT OF STOCK</del>
-                            </div>
-                        </div>
-                    </div>
-
+                    {{/each}}
+                <!--------- RANDOM BOOKS E--------->
                 </div>
 
             </div>

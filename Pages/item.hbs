@@ -31,21 +31,6 @@
 
     <div class = "main-wrapper">
 
-        <section>
-            <button class="show-modal">Show Modal</button>
-            <span class="overlay"></span>
-
-            <div class="modal-box">
-                <i class="fa-regular fa-circle-check"></i>
-                <h2>Completed</h2>
-                <h3>You have sucessfully downloaded all the source code files.</h3>
-
-                <div class="buttons">
-                <button class="close-btn">Ok, Close</button>
-                <button>Open File</button>
-                </div>
-            </div>
-            </section>
 
         <div class = "container">
             <div class = "product-div">
@@ -84,6 +69,19 @@
                             <input type="hidden" name="image" value="{{ book.ItemImage }}">
                             <button type="submit" class="request"><i class="fas fa-wallet"></i> Request Now</button>
                         </form>
+                    <section>
+                        <div class="modal-box">
+                            <span class="overlay"></span>
+                            <i class="fa-regular fa-circle-check"></i>
+                            <h2>Completed</h2>
+                            <h3>You have sucessfully downloaded all the source code files.</h3>
+
+                            <div class="buttons">
+                            <button class="close-btn">Ok, Close</button>
+                            <button><a href="/myreserved">View Reserved</a></button>
+                            </div>
+                        </div>
+                    </section>
                         
                     </div>
                 </div>
@@ -91,7 +89,7 @@
         </div>
     </div>
 
-
+    <script src="./jss/modal.js"></script>
     <script src="./jss/product.js"></script>
 </body>
 </html>

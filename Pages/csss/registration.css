@@ -113,6 +113,8 @@ h2{
     width: 50%;
     padding-bottom: 10px;
 }
+
+
 .input-box:nth-child(2n){
     justify-content: end;
 }
@@ -184,5 +186,9 @@ h2{
     color: red;
     font-size: 16px;
     margin-top: 10px;
+}
+
+.error-input {
+    border: 2px solid red; /* Set the border color to red */
 }
 

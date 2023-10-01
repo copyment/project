@@ -144,14 +144,12 @@ header nav ul li.active::after{
 /*-------------- USER INFORMATION START --------------*/
 .content{
     background-color: #ffffff;
-    position: absolute;
-    top: 68%;
-    transform: translateY(-50%);
-    left: 400px;
     border-radius: 10px;
     max-width: 23cm;
-    width: 100%;
-    
+    width: 100%;  
+    margin-top: -290px;
+    margin-left: 300px;
+    margin-bottom: -350px;
 }
 .content .div-text{
     position: absolute;

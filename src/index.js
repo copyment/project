@@ -42,9 +42,22 @@ app.get("/signup", (req,res)=>{
 app.get("/login", (req,res)=>{
     res.render("login")
 })
-app.get("/home", (req,res)=>{
-    res.render("home");
-})
+
+app.get("/home", async (req,res) => {
+    try {
+        const latestBooks = await Book.find()
+        .sort({ DateCatalog: -1 })
+        .limit(4);
+        const randomBooks = await Book.aggregate([
+            {$sample: { size: 4 }}
+        ]);
+
+        res.render("home", {latestBooks, randomBooks});
+    } catch (error){
+        console.error("Error:", error);
+        res.status(500).send("Error occured.")
+    }
+});
 app.get("/profile", (req,res)=>{
     const user = req.session.user;
     const formattedRegistrationDate = user.DateRegistered.toLocaleString('en-US', {
@@ -149,19 +162,41 @@ app.get("/myreserved", async (req, res) => {
     }
 });
 
-
 // TO ACCESS OR OPEN THE PAGES S
+
 
 // GET DATA FROM REGISTRATION S
 app.post("/signup", upload.single("profilePicture"),async (req,res)=>{
 try {
     const idNumber = req.body.idnumber;
+    const contact = req.body.contact;
+    const email = req.body.email;
+    const rfid = req.body.rfid;
+    const usern = req.body.username;
 
-    const existingUser = await User.findOne({ IDNumber: idNumber });
+    const existingID = await User.findOne({ IDNumber: idNumber });
+    const existingContact = await User.findOne({ ContactNumber: contact });
+    const existingEmail = await User.findOne({ Email: email });
+    const existingRfid = await User.findOne({ Rfid: rfid });
+    const existingUsern = await User.findOne({ Username: usern });
 
-    if (existingUser) {
-        return res.render("signup", {errorMessage: "ID number you enter are already exist. Please try another!"});
+    if (existingID) {
+        return res.render("signup", {errorMessage: "ID number already exist, Please try another!"});
     }
+    if (existingContact) {
+        return res.render("signup", {errorMessage: "Contact Number already exist. Please try another!"});
+    }
+    if (existingEmail) {
+        return res.render("signup", {errorMessage: "Email already exist. Please try another!"});
+    }
+    if (existingRfid) {
+        return res.render("signup", {errorMessage: "RFID already exist. Please try another!"});
+    }
+    if (existingUsern) {
+        return res.render("signup", {errorMessage: "Username already exist. Please try another!"});
+    }
+    
+
     const data={
     Fullname:req.body.fullname,
     Age:req.body.age,
@@ -288,7 +323,6 @@ app.post("/request", async (req, res) => {
         console.log("Request saved successfully");
 
         // Respond with a success message or redirect the user to a confirmation page
-
     } catch (error) {
         console.error("Error:", error);
         res.status(500).send("Error occurred while processing the request");

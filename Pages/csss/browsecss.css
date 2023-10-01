@@ -160,10 +160,13 @@ header nav ul li.active::after{
     border-bottom: 2px solid #e9eaf0;
 }
 .item .div-img img{
-    width: 100%;
+    width: 240px;
+    height: 360px;
+    margin-right: 30px;
 }
 .item .div-text h4{
-    margin: 15px 0 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 .item .div-text h4 a{
     color: #172856;
@@ -172,6 +175,7 @@ header nav ul li.active::after{
     color: #999;
     font-size: 14px;
     margin-bottom: 15px;
+    margin-right: -5px;
 }
 .item .div-text .stars i{
     color: #fcc83f;
