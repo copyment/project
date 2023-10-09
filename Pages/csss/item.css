@@ -227,6 +227,7 @@ img{
 .request{
     background-color: #000;
     border: 2px solid #000;
+    margin-right: 10px;
 }
 .request:hover{
     background-color: #fff;
@@ -314,6 +315,10 @@ section {
     font-size: 14px;
     padding: 6px 12px;
     margin: 0 10px;
+  }
+
+  .available-copies span {
+    margin-top: 10px;
   }
 
 

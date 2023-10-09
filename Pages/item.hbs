@@ -50,12 +50,9 @@
                         <span>{{book.EditionNumber}} Edition</span>
                     </div>
                     <p class = "product-description">{{book.Description}}</p>
-                    <div class="available-copies">
-                        <h2>Available Copies:{{ availableCopiesCount}}</h2> <!-- AVAILABLE COPIES COUNT -->
-                    </div>
 
                     <div class = "btn-groups">
-                        <!--<button type = "button" class = "add-cart-btn"><i class = "fas fa-shopping-cart"></i>SAVE</button>-->
+                        
                         <form action="/request" method="post">
                             <input type="hidden" name="userId" value="{{ user._id }}">
                             <input type="hidden" name="bookId" value="{{ book._id }}">
@@ -68,7 +65,13 @@
                             <input type="hidden" name="requestStatus" value="pending">
                             <input type="hidden" name="image" value="{{ book.ItemImage }}">
                             <button type="submit" class="request"><i class="fas fa-wallet"></i> Request Now</button>
+                            <button type ="button" class = "add-cart-btn"><i class = "fas fa-shopping-cart"></i> Add to Cart</button>
                         </form>
+
+                        <div class="available-copies">
+                        <span>Available Copies:{{ availableCopiesCount}}</span> <!-- AVAILABLE COPIES COUNT -->
+                        </div>
+
                     <section>
                         <div class="modal-box">
                             <span class="overlay"></span>
