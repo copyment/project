@@ -23,6 +23,9 @@
                     <input type="search" placeholder="Search Here...">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
+                <div class="icon">
+                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
             </div>
 
             <ul>
@@ -213,15 +216,15 @@
             <div class="content">
                 <div class="titile">
                     <h4>Other Books</h4>
-
                 </div>
+
                 <div class="all-items">
                         {{#each groupedBooks}}
                                 <div class="row">
                                     {{#each this}}
                                         <div class="item">
                                             <div class="div-img">
-                                                <img src="data:image/jpeg;base64,{{ this.Image }}" alt="{{ this.Title }}">
+                                                <img src="data:image/jpeg;base64,{{ this.ItemImage }}" alt="{{ this.Title }}">
                                             </div>
                                             <div class="div-text">
                                                 <h4><a href="/item?bookId={{this._id}}">{{ this.Title }}</a></h4>

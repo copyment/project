@@ -20,6 +20,9 @@
                         <input type="search" placeholder="Search Here...">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
+                    <div class="icon">
+                    <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                    </div>
                 </div>
                 <ul>
                     <li><a href="/home">HOME</a></li>
@@ -72,7 +75,7 @@
                         <span>Available Copies:{{ availableCopiesCount}}</span> <!-- AVAILABLE COPIES COUNT -->
                         </div>
 
-                    <section>
+                   <!-- <section>
                         <div class="modal-box">
                             <span class="overlay"></span>
                             <i class="fa-regular fa-circle-check"></i>
@@ -82,6 +85,20 @@
                             <div class="buttons">
                             <button class="close-btn">Ok, Close</button>
                             <button><a href="/myreserved">View Reserved</a></button>
+                            </div>
+                        </div>
+                    </section>-->
+
+                    <section class="modal-box" id="myModal">
+                        <span class="overlay" id="overlay"></span>
+                        <div class="modal-content">
+                            <i class="fa-regular fa-circle-check" id="successIcon"></i>
+                            <i class="fa-regular fa-circle-xmark" id="errorIcon"></i>
+                            <h2 id="modalTitle"></h2>
+                            <h3 id="modalMessage"></h3>
+                            <div class="buttons">
+                                <button class="close-btn" id="closeModal">Close</button>
+                                <button id="viewReserved">View Reserved</button>
                             </div>
                         </div>
                     </section>

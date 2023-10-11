@@ -146,6 +146,7 @@ header nav .logo-search .search-box{
     width: 500px;
     height: 40px;
     position: relative;
+    margin-left: 500px;
 }
 header nav .logo-search .search-box input{
     width: 100%;
@@ -297,7 +298,7 @@ header nav ul li.active::after{
     color: #999;
 }
 .sec-3 .content{
-    background-color: #e9eaf0;
+    background-color: transparent;
 }
 .sec-3 .content .bg-sec{
     height: 250px;

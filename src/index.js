@@ -288,11 +288,20 @@ app.post("/login",async (req,res)=>{
 // Handle the request POST request
 app.post("/request", async (req, res) => {
     try {
-        const userId = req.session.user._id;
-        const { bookId, userName, idNumber, title, author, callNumber, requestStatus, image} = req.body;
+        const userId = req.body.userId;
+        const bookId = req.body.bookId;
+        const userName = req.body.userName;
+        const idNumber = req.body.idNumber;
+        const title = req.body.title;
+        const author = req.body.author;
+        const callNumber = req.body.callNumber;
+        const requestStatus = req.body.requestStatus;
+        const image = req.body.image;
+        const dateRequested = req.body.dateRequested;
 
-        // Create a new request object
-        const request = {
+        // Save the request to your database
+        // Example using your RequestModel
+        const newRequest = new RequestModel({
             UserId: userId,
             BookId: bookId,
             Username: userName,
@@ -300,34 +309,22 @@ app.post("/request", async (req, res) => {
             Title: title,
             CreatorAuthor: author,
             CallNumber: callNumber,
+            DateRequested: dateRequested,
             RequestStatus: requestStatus,
             Image: image,
-        };
-
-        const formattedDate = new Date().toLocaleString('en-US', {
-            year: 'numeric',
-            month: 'numeric',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
-            hour12: true
         });
-        request.DateRequested= formattedDate;
-
-        // Debugging: Output request object
-        // Save the request to your "Request Collection"
-        const newRequest = new RequestModel(request);
         await newRequest.save();
 
-        // Debugging: Output success message
-        console.log("Request saved successfully");
-
-        // Respond with a success message or redirect the user to a confirmation page
+        // Respond with a success message
+        res.status(200).json({ message: "Request saved successfully" });
+        console.log("request saved successfully");
     } catch (error) {
         console.error("Error:", error);
-        res.status(500).send("Error occurred while processing the request");
+        // Handle errors here
+        res.status(500).json({ error: "Error occurred while processing the request" });
     }
 });
+
 
 app.listen(3000,()=>{
     console.log("port connected")
