@@ -6,6 +6,11 @@ var path = require("path")
 const {User, MessageModel, Book, RequestModel} = require ("./mongodb");
 const multer = require("multer");
 const sharp = require('sharp');
+const {format, parseISO} = require("date-fns");
+
+
+//process.env.TZ = 'Asia/Manila'; // Set the timezone to the Philippines
+
 
 const storage = multer.memoryStorage();
 const upload = multer({ 
@@ -58,18 +63,27 @@ app.get("/home", async (req,res) => {
         res.status(500).send("Error occured.")
     }
 });
-app.get("/profile", (req,res)=>{
+app.get("/profile", (req, res) => {
     const user = req.session.user;
-    const formattedRegistrationDate = user.DateRegistered.toLocaleString('en-US', {
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        hour12: true
-    });
-    res.render("profile", {user:user, formattedRegistrationDate: formattedRegistrationDate});
+
+    // Get the current system timezone offset
+    const tzOffset = new Date().getTimezoneOffset() * 60000;
+    console.log("User.DateRegistered (Before):", user.DateRegistered);
+    console.log("tzOffset:", tzOffset);
+
+    // Parse the DateRegistered field
+    const dateRegistered = new Date(user.DateRegistered);
+
+    // Convert the date to the desired timezone and format
+    const formattedRegistrationDate = format(
+        dateRegistered, 
+        "MMMM dd, yyyy, hh:mm a"
+    );
+    console.log("Formatted Registration Date (After):", formattedRegistrationDate);
+
+    res.render("profile", { user, formattedRegistrationDate });
 });
+
 app.get("/FRONT", (req,res)=>{
     res.render("FRONT")
 })
@@ -196,7 +210,6 @@ try {
         return res.render("signup", {errorMessage: "Username already exist. Please try another!"});
     }
     
-
     const data={
     Fullname:req.body.fullname,
     Age:req.body.age,
@@ -211,15 +224,14 @@ try {
     AccountType:req.body.account,
     Status: req.body.status,
 };
-const formattedDate = new Date().toLocaleString('en-US', {
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: true
-});
+//const tzOffset = new Date().getTimezoneOffset() * 60000; // Get the current system timezone offset
+const currentDate = new Date(); // Create a date object with the adjusted offset
+const formattedDate = currentDate.toISOString();
 data.DateRegistered = formattedDate;
+//const tzOffset = new Date().getTimezoneOffset() * 60000; // Get the current system timezone offset
+//const currentDate = new Date(Date.now() - tzOffset); // Create a date object with the adjusted offset
+//const formattedDate = format(currentDate, "MMMM dd, yyyy, hh:mm a", { timeZone: 'Asia/Manila' });
+//data.DateRegistered = formattedDate;
 
 if (req.file){
     const profilePictureBuffer = await sharp (req.file.buffer)

@@ -53,8 +53,7 @@ const UserSchema=new mongoose.Schema({
         required:true
     },
     DateRegistered: {
-        type:String,
-        default: Date.now
+        type: Date
     },
     ProfilePicture: {
         type: String,
