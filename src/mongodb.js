@@ -194,7 +194,7 @@ const RequestSchema = new mongoose.Schema({
     Title: { type:String,},
     CreatorAuthor: {type: String,},
     CallNumber: {type: String,},
-    DateRequested: {type:String,},
+    DateRequested: {type:Date,},
     RequestStatus: {type:String,},
     Image: {type: String},
 });

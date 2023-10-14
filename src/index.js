@@ -321,10 +321,13 @@ app.post("/request", async (req, res) => {
             Title: title,
             CreatorAuthor: author,
             CallNumber: callNumber,
-            DateRequested: dateRequested,
             RequestStatus: requestStatus,
             Image: image,
         });
+
+        const currentDate = new Date(); // Create a date object with the adjusted offset
+        const formattedDate = currentDate.toISOString();
+        newRequest.DateRequested = formattedDate;
         await newRequest.save();
 
         // Respond with a success message
